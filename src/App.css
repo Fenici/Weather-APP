@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+
+body,
+html,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", sans-serif !important;
+  color: rgb(254, 80, 24) !important;
+
+  font-size: calc(10px + 2vmin);
+}
+
+.App {
+  /* text-align: center; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7%;
+}
+
+.centerViewPort {
+  padding-top: 50px;
+}
+.App-Wrapper {
+  height: 100%;
+  width: 1282px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    10px 10px 10px 10px rgba(0, 0, 0, 0.22);
+  color: rgb(254, 80, 24);
+}
+
+.city {
+  font-weight: 300;
+  font-size: 60px;
+  color: rgb(254, 80, 24);
+  padding-left: 15px;
+  margin: 0;
+}
+
+.won-color {
+  color: rgb(254, 80, 24);
+}
+
+.changes {
+  padding: 3em 0em 3em 1em !important;
+}
+.flag-size {
+  margin: 0 !important;
+}
+
+.country {
+  /* position: absolute; */
+  font-family: "Lato", sans-serif !important;
+  font-weight: 500;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgb(254, 80, 24);
+  /* right: 15%;
+  top: 15%; */
+}
+
+.divider {
+  /* position: absolute; */
+  width: 60px;
+  height: 5px;
+  background: rgb(254, 80, 24);
+  margin: 0 auto;
+  /* right: 19%;
+  top: 30%; */
+}
+.temperature {
+  font-size: 10rem;
+  text-align: center;
+  padding-top: 80px;
+  padding-left: 55px;
+}
+/* .celsius {
+  font-size: 8rem;
+  padding-left: 30px;
+  vertical-align: 20px;
+} */
+.condition_text {
+  text-align: center;
+  padding-top: 80px;
+  /* padding-right:42px; */
+  font-size: 2rem;
+}
+
+.condition {
+  padding-top: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.humi {
+  float: left;
+  width: 50%;
+  padding: 0px;
+}
+
+.wind {
+  float: left;
+  width: 50%;
+  padding: 0px;
+  border-left: 3px solid rgb(254, 80, 24);
+  height: 40px;
+}
+
+.feed {
+  border-top: 1px rgb(254, 80, 24) solid;
+}
+.detail {
+  border-top: 1px rgb(254, 80, 24) solid;
+}
+
+.feed-header {
+  display: inline-block;
+}
+.twitter-image {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  vertical-align: -17px;
+}
+.twitter-title {
+  display: inline-block;
+  margin: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.twitter-location {
+  display: inline-block;
+}
+
+.function-divider {
+  widows: 100%;
+  height: 200px;
+  border-right: 1px solid rgb(254, 80, 24);
+  z-index: -999;
+}
+
+.weather-title {
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.forecast-condition {
+font-size: 12px;
+font-weight: 300;
+}
+.temp {
+  font-size: 20px;
+  font-weight: 600;
+}
+.time_stamp {
+margin-bottom: 15px;
+    font-size: 20px;
+}
+
+a{
+  color: rgb(254, 80, 24)!important;
+}
+
+.timeline-Footer{
+  color: rgb(254, 80, 24)!important;
+}
