@@ -147,7 +147,7 @@ class Weather extends React.Component {
                 dataSource={
                   {
                   sourceType: 'profile',
-                  screenName: 'france',
+                  screenName: data.location.name,
                 }
               
               
