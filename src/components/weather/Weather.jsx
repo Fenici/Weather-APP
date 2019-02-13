@@ -156,7 +156,6 @@ class Weather extends React.Component {
                   username: 'Axios',
                   height: '200',
                   width:'400',
-                  chrome: "noheader",
                   linkColor: "#fe5018",
                   borderColor: "#fe5018"
                 }}
