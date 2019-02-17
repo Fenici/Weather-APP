@@ -180,3 +180,24 @@ a{
 .timeline-Footer{
   color: rgb(254, 80, 24)!important;
 }
+
+.submit-city{
+  color: rgb(254, 80, 24);
+}
+
+
+select.ui.dropdown {
+    height: 38px;
+    padding: .5em;
+    border: 1px solid rgb(254, 80, 24)!important;
+    visibility: visible;
+    color: rgb(254, 80, 24);
+}
+.ui.basic.button, .ui.basic.buttons .button {
+    box-shadow: 0 0 0 1px rgb(254, 80, 24) inset!important;
+    color: rgb(254, 80, 24)!important;
+}
+
+.Search{
+  color: rgb(254, 80, 24)!important;
+}

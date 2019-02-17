@@ -1,9 +1,11 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
-import Forecast from "./Forecast";
+import { Grid, Loader } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import Axios from "axios";
-import { Timeline, Hashtag } from 'react-twitter-widgets'
+import Details from "./Details";
+import Selector from "./selector";
+import Locations from "./Locations";
+import TwitterFeed from "./TwitterFeed";
+import Forecast from "./Forecast";
 
 
 const DEFAULT_QUERY = "paris";
@@ -13,7 +15,7 @@ const PARAM_SEARCH = "q=";
 const PARAM_DAYS = "days=";
 
 const COUNT_DAYS = "5";
-const SECRET_KEY = "5d052e4b4a62413091d90527191601";
+const SECRET_KEY = "b231215f185d4a86a90103251191602";
 
 
 class Weather extends React.Component {
@@ -22,33 +24,27 @@ class Weather extends React.Component {
 
     this.state = {
       data: null,
-      value: DEFAULT_QUERY, isLoading: false,
-
+      value: DEFAULT_QUERY, 
+      isLoading: false,
     };
   }
 
-  handleChange = event => {  
+  handleChange = event => {
     this.setState({ value: event.target.value });
   };
 
   getData = value => {
+    this.setState({isLoading:true})
     const url = `${PATH_BASE}?${PARAM_KEY}${SECRET_KEY}&${PARAM_SEARCH}${this.state.value}&${PARAM_DAYS}${COUNT_DAYS}`;
-
-    // Axios.get(url).then(res=>{
-    //   const data = res.data
-
-    //   this.setState=({data})
-    // })
-
     fetch(url).then(response => {
       response.json().then(data => {
         console.log(data);
-        this.setState({ data });
+        this.setState({ data ,isLoading:false});
       });
     });
   };
 
-  handleSubmit=(event)=>{
+  handleSubmit = (event) => {
     console.log(this.state.value);
     const { value } = this.state
     this.getData(value);
@@ -61,7 +57,7 @@ class Weather extends React.Component {
   }
 
   render() {
-    const { data } = this.state;
+    const { data,isLoading } = this.state;
 
     const forecastList = data;
 
@@ -74,101 +70,23 @@ class Weather extends React.Component {
     return (
       <Grid container stackable className="App-Wrapper">
         <Grid.Row>
-          <Grid.Column>
-            {/* <Select
-              placeholder="Select your country"
-              options={countryOptions}
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            {this.countryOptions=(city)=>{
-             return  <div key={city.key}>
-                {city.text}
-             </div>
-            }} */}
-            <form onSubmit={this.handleSubmit} className="ui selection dropdown">
-              <label>
-                Pick your favorite City:
-                <br></br>
-                <br></br>
-
-                <select value={this.state.value} onChange={this.handleChange} >
-                  <option value="paris">Paris</option>
-                  <option value="sydney">Sydney</option>
-                  <option value="beijing">Beijing</option>
-                  <option value="London">London</option>
-                </select>
-              </label>
-              <input type="submit" value="Submit" />
-
-            </form>
-          </Grid.Column>
+          <Grid.Column width={3}>
+           {isLoading ? <Loader /> :<Selector handleSubmit={this.handleSubmit} value={this.state.value} handleChange={this.handleChange} />
+            } </Grid.Column>
         </Grid.Row>
 
         <Grid.Row columns={2} padded="horizontally" className="top">
           <Grid.Column>
-            <div className="temperature">
-              {data.current.temp_c}
-              <span className="celsius">°</span>
-            </div>
-            <div className="condition_text">{data.current.condition.text}</div>
-            <div className="condition">
-              <div className="humi">
-                Humidity <br />
-                {data.current.humidity}%
-              </div>
-              <div className="wind">
-                Wind
-                <br />
-                {data.current.wind_mph} mph
-              </div>
-            </div>
+            <Details temp_c={data.current.temp_c} text={data.current.condition.text} humidity={data.current.humidity} wind={data.current.wind_mph} />
           </Grid.Column>
-
-          <Grid.Column style={{ textAlign: "center", marginTop: "50px" }}>
-            <h2 className="country">{data.location.name}</h2>
-            <div className="divider" />
-          </Grid.Column>
+          <Locations name={data.location.name} />
         </Grid.Row>
 
         <Grid.Row>
           <Grid.Column width={6} className="feed">
-            <div className="feed-header">
-              <img
-                src="https://i.imgur.com/0JB7D2b.png"
-                alt="tw"
-                className="twitter-image"
-              />
-              <span className="twitter-title">Twitter Feed </span>
-              <span className="twitter-location">
-                <Hashtag hashtag={data.location.name}/>
-                              </span>
-              <Timeline
-                dataSource={
-                  {
-                  sourceType: 'profile',
-                  screenName: data.location.name,
-                }
-              
-              
-              }
-                options={{
-                  username: 'Axios',
-                  height: '200',
-                  width:'400',
-                  linkColor: "#fe5018",
-                  borderColor: "#fe5018"
-                }}
-                onLoad={() => console.log('Timeline is loaded!')}
-              />
-          
-            </div>
-            <div />
-
-            {/* <div className="function-divider"></div> */}
+            <TwitterFeed name={data.location.name}/>
           </Grid.Column>
           <Grid.Column width={10} className="detail">
-            {/* <span className="weather-title">Weather Detail</span> */}
             <Forecast forecastList={forecastList} />
           </Grid.Column>
         </Grid.Row>
