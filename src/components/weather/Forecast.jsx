@@ -9,7 +9,7 @@ class Forecast extends Component {
     const list = forecastList.forecast.forecastday;
 
     return (
-      <Grid centered>
+      <Grid centered stackable>
         <Grid.Row>
           {list.map(forecast => (
             <Grid.Column
