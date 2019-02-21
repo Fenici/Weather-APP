@@ -1,8 +1,11 @@
 ###APP Improvement list
+
 ~1. Modify codes into reusable component~
 
-2. Add Loading animate function when switching the city
-3. Write my own twitter feed or timeline
+~2. Add Loading animate function when switching the city~
+
+~3. Write my own twitter feed or timeline~
+
 4. add search function allow user to input
 5. add client cache allow user to view the history without 6. re-rendering the page
 7. responsive to mobile
