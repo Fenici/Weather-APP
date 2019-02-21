@@ -1,5 +1,5 @@
 ###APP Improvement list
-1. Modify codes into reusable component
+~1. Modify codes into reusable component~
 2. Add Loading animate function when switching the city
 3. Write my own twitter feed or timeline
 4. add search function allow user to input
